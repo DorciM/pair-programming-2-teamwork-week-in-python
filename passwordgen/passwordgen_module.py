@@ -3,9 +3,9 @@ import string
 
 
 def passwordgen():
-    good_pw = [0,0,0,0]
+    good_pw = [0, 0, 0, 0]
     pw = []
-    chars= string.ascii_letters + string.digits + "[!@#$%^&*()?]"
+    chars = string.ascii_letters + string.digits + "[!@#$%^&*()?]"
     for i in range(8):
         pw.append(random.choice(chars))
     for i in range(8):
@@ -21,12 +21,20 @@ def passwordgen():
         pw = ''.join(str(i) for i in pw)
         return pw
     else:
-        passwordgen()
+        return passwordgen()
 
 
 def main():
-    password = passwordgen()
-    print (password)
+    choice = str(input("Press 'w' for weak or 's' for strong password\n"))
+    weak_pw = ["01234", "password", "pw", "12345", "invalid", "qwerty", "baseball",
+               "letmein", "access", "batman", "superman", "696969", "trustno"]
+    if choice == 's':
+        password = passwordgen()
+    elif choice == 'w':
+        password = random.choice(weak_pw)
+    else:
+        print("You're so retarded you don't deserve to have a password.")
+    print(password)
     return
 
 
